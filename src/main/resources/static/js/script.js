@@ -2,15 +2,26 @@
 function insertCustomer() {
     $('#insertDetails').click(function(e) {
         e.preventDefault();
+        const regex_pattern = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
         var email = $('#email').val();
+        var isValid = false;
+
+        if (regex_pattern.test(email)) {
+            isValid = true;
+        }
+        else {
+            isValid = false;
+            alert("Email isn't valid");
+        }
+
         var title = $('#title').val();
         var first = $('#first').val();
         var last = $('#last').val();
         var line1 = $('#line1').val();
         var post = $('#post').val();
 
-    if(email.length > 0 && title.length>0 && first.length>0 && last.length>0 && line1.length>0 && post.length>0) {
+    if( isValid == true && email.length > 0 && title.length>0 && first.length>0 && last.length>0 && line1.length>0 && post.length>0) {
         var fList = {
             email_address: email,
             title: title,
@@ -32,7 +43,7 @@ function insertCustomer() {
             complete: [
                 function () {
                     alert("Registered");
-                    window.location.href = "http://localhost:8081/success";
+                    window.location.href = "http://localhost:8080/success";
                 }
             ],
         });
@@ -53,5 +64,7 @@ $(document).ready(function() {
     insertCustomer();
 
 });
+
+
 
 
