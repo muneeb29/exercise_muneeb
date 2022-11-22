@@ -7,11 +7,12 @@ import java.util.Date;
 
 @Entity
 @Table(name="customers")
-public class customers {
+public class Customers {
     @javax.persistence.Id
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @Temporal(TemporalType.DATE)
     @Column(name = "registered", nullable = false)
     private Date registered;
     @Column(name = "email_address", unique=true, nullable = false)
@@ -43,6 +44,10 @@ public class customers {
 
     public void setRegistered(Date registered) {
         this.registered = registered;
+    }
+    @PrePersist
+    private void reg(){
+        registered = new Date();
     }
 
     public String getEmail_address() {
