@@ -29,16 +29,12 @@ function insertCustomer() {
             dataType: 'json',
             data: JSON.stringify(fList),
             contentType: "application/json; charset=utf-8",
-            success: [
+            complete: [
                 function () {
                     alert("Registered");
                     window.location.href = "http://localhost:8081/success";
                 }
             ],
-            error: function () {
-                alert("Please Check The Fields Once Again!.");
-                window.location.href = "http://localhost:8081/success";
-            }
         });
 
     }
