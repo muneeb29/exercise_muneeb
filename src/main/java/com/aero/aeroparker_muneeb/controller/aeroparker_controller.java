@@ -15,7 +15,7 @@ public class aeroparker_controller {
     @Autowired
     private aeroparker_repo repo;
 
-    @GetMapping("/register")
+    @GetMapping("/registration")
     public String home(){
         return "index";
     }
