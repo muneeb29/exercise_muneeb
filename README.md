@@ -2,7 +2,7 @@
 
 Works On:
 
-http://localhost:8080/register
+http://localhost:8080/registration
 
 Schema name is: aeroparker
 
